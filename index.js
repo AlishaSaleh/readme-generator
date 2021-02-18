@@ -8,13 +8,27 @@ const questions = [
     {
         type: 'input',
         name: 'title',
-        message: 'What is the title to your project'
+        message: 'What is the title to your project',
         // compulsory: validate
+        validate: (answer) => {
+            if (answer) {
+                return true;
+            } else {
+                return console.log('Not a valid title. Please try again.');
+            } 
+        }
     }, {
         type: 'input',
         name: 'description',
-        message: 'Please enter a description of your project.'
+        message: 'Please enter a description of your project.',
         // compulsory: validate
+        validate: (answer) => {
+            if (answer) {
+                return true;
+            } else {
+                return console.log('Not a valid description. Please try again.');
+            } 
+        }
     }, {
         type: 'input',
         name: 'installation',
@@ -27,8 +41,8 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Please choose a license for your project.',
-        choices: ['Apache License 2.0', 'GNU General Public License v3.0', 
-        'MIT License', 'Mozilla Public License 2.0', 'Open Software License 3.0']
+        choices: ['Apache License 2.0', 'GNU General Public License v3.0',
+            'MIT License', 'Mozilla Public License 2.0', 'Open Software License 3.0']
         // add more?
     }, {
         type: 'input',
@@ -42,10 +56,18 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, err =>
+        err ? console.log(err) : console.log('Success! Your README file has been generated!')
+    );
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    const userInput = inquirer.prompt(questions).then((data) => {
+
+    })
+ }
 
 // Function call to initialize app
 init();
