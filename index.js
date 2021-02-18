@@ -52,6 +52,32 @@ const questions = [
         type: 'input',
         name: 'tests',
         message: 'Please provide examples of tests and how to run them.'
+    }, {
+        type: 'input',
+        name: 'username',
+        message: 'What is your GitHub username?',
+        validate: (answer) => {
+            if (answer) {
+                return true;
+            } else {
+                return console.log('Not a valid username. Please try again.');
+            } 
+        }
+    }, {
+        type: 'input',
+        name: 'profile',
+        message: 'What is the URL to your GitHub profile?',
+        validate: (answer) => {
+            if (answer) {
+                return true;
+            } else {
+                return console.log('Not a valid URL. Please try again.');
+            } 
+        }
+    }, {
+        type: 'input',
+        name: 'email',
+        message: 'Please an email and instructions on how to contact you with additional questions'
     },
 ];
 
@@ -64,9 +90,11 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() {
-    const userInput = inquirer.prompt(questions).then((data) => {
+    const userInput = inquirer.prompt(questions)
+    
+    // .then((userInput) => {
 
-    })
+    // })
  }
 
 // Function call to initialize app
