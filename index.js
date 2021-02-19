@@ -2,6 +2,8 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
+const generateMarkdown = require('./utils/generateMarkdown.js');
+
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -37,6 +39,10 @@ const questions = [
         type: 'input',
         name: 'usage',
         message: 'Please provide instructions and examples for usage.'
+    }, {
+        type: 'input',
+        name: 'credits',
+        message: 'Please credit any collaborators with their GitHub usernames.'
     }, {
         type: 'list',
         name: 'license',
@@ -91,10 +97,12 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     const userInput = inquirer.prompt(questions)
-    
-    // .then((userInput) => {
 
-    // })
+    
+    .then((userInput) => {
+        writeToFile('Example.md', userInput)
+
+    })
  }
 
 // Function call to initialize app
