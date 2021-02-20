@@ -28,7 +28,29 @@ function renderLicenseBadge(license) {
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) { }
+function renderLicenseLink(license) { 
+  let link;
+  if (license) {
+    switch (license) {
+      case 'Apache License 2.0':
+        link = '> This project was created under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)';
+        break;
+      case 'GNU General Public License v3.0':
+        link = '> This project was created under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)';
+        break;
+      case 'MIT License':
+        link = '> This project was created under the [MIT License](https://opensource.org/licenses/MIT)';
+        break;
+      case 'Mozilla Public License 2.0':
+        link = '> This project was created under the [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/2.0/)';
+        break;
+      case 'Open Software License 3.0':
+        link = '> This project was created under the [Open Software License 3.0](https://opensource.org/licenses/OSL-3.0)';
+        break;
+    }
+    return link;
+  }
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
@@ -48,7 +70,7 @@ function generateMarkdown(data) {
   * [Installation](#installation)
   * [Usage](#usage)
   * [Credits](#credits)
-  * [Licese](#license)
+  * [License](#license)
   * [Contributing](#contributing)
   * [Tests](#tests)
   * [Questions](#questions)
@@ -63,7 +85,10 @@ function generateMarkdown(data) {
   ${data.credits}
 
   ## License
-  ${data.license}
+  ${renderLicenseBadge(data.license)}
+
+
+  ${renderLicenseLink(data.license)}
 
   ## Contributing 
   ${data.contributing}
@@ -74,7 +99,7 @@ function generateMarkdown(data) {
   ## Questions?
   You can reach me on GitHub:
   [${data.username}](${data.profile})
-  OR via this email:
+  \n OR via this email:
   ${data.email}
   
   `
