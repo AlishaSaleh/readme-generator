@@ -12,25 +12,25 @@ const questions = [
         name: 'title',
         message: 'What is the title to your project',
         // compulsory: validate
-        validate: (answer) => {
-            if (answer) {
-                return true;
-            } else {
-                return console.log('Not a valid title. Please try again.');
-            } 
-        }
+        // validate: (answer) => {
+        //     if (answer) {
+        //         return true;
+        //     } else {
+        //         return console.log('Not a valid title. Please try again.');
+        //     } 
+        // }
     }, {
         type: 'input',
         name: 'description',
         message: 'Please enter a description of your project.',
         // compulsory: validate
-        validate: (answer) => {
-            if (answer) {
-                return true;
-            } else {
-                return console.log('Not a valid description. Please try again.');
-            } 
-        }
+        // validate: (answer) => {
+        //     if (answer) {
+        //         return true;
+        //     } else {
+        //         return console.log('Not a valid description. Please try again.');
+        //     } 
+        // }
     }, {
         type: 'input',
         name: 'installation',
@@ -62,24 +62,24 @@ const questions = [
         type: 'input',
         name: 'username',
         message: 'What is your GitHub username?',
-        validate: (answer) => {
-            if (answer) {
-                return true;
-            } else {
-                return console.log('Not a valid username. Please try again.');
-            } 
-        }
+        // validate: (answer) => {
+        //     if (answer) {
+        //         return true;
+        //     } else {
+        //         return console.log('Not a valid username. Please try again.');
+        //     } 
+        // }
     }, {
         type: 'input',
         name: 'profile',
         message: 'What is the URL to your GitHub profile?',
-        validate: (answer) => {
-            if (answer) {
-                return true;
-            } else {
-                return console.log('Not a valid URL. Please try again.');
-            } 
-        }
+        // validate: (answer) => {
+        //     if (answer) {
+        //         return true;
+        //     } else {
+        //         return console.log('Not a valid URL. Please try again.');
+        //     } 
+        // }
     }, {
         type: 'input',
         name: 'email',
@@ -89,18 +89,17 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, err =>
+    fs.writeFile(fileName, JSON.stringify(data), err =>
         err ? console.log(err) : console.log('Success! Your README file has been generated!')
     );
 }
 
 // TODO: Create a function to initialize app
 function init() {
-    const userInput = inquirer.prompt(questions)
-
-    
-    .then((userInput) => {
-        writeToFile('Example.md', userInput)
+    inquirer.prompt(questions)
+    .then((response) => {
+        writeToFile('myExample.md', response);
+        generateMarkdown(response);
 
     })
  }

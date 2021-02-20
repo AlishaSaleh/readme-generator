@@ -37,67 +37,47 @@ function renderLicenseSection(license) { }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  let mdContents = `## Table of Contents`;
-  if (data.installation !== '') {
-    `* [Installation](#installation)`
-  };
-  if (data.usage !== '') {
-    `* [Usage](#usage)`
-  };
-  if (data.credits !== '') {
-    `* [Credits](#credits)`
-  };
-  if (data.license !== '') {
-    `* [Licese](#license)`
-  };
-  if (data.contributing !== '') {
-    `* [Contributing](#contributing)`
-  };
-  if (data.tests !== '') {
-    `* [Tests](#tests)`
-  };
-
-  let mdMain = `# ${data.title}
+  return `# ${data.title}
 
   ## Description
 
   ${data.description}
 
-  `;
-  mdMain += mdContents;
+  ## Table of Contents
   
-  if (data.installation !== '') {
-    mdMain += `## Installation
-    
-    ${data.installation}`
-  };
-  if (data.usage !== '') {
-    mdMain += `## Usage
-    
-    ${data.usage}`
-  };
-  if (data.credits !== '') {
-    mdMain += `## Credits
-    
-    ${data.credits}`
-  };
-  if (data.license !== '') {
-    mdMain += `## License
-    
-    ${data.license}`
-  };
-  if (data.contributing !== '') {
-    mdMain += `## Contributing
-    
-    ${data.contributing}`
-  };
-  if (data.tests !== '') {
-    mdMain += `## Tests
-    
-    ${data.tests}`
-  };
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Credits](#credits)
+  * [Licese](#license)
+  * [Contributing](#contributing)
+  * [Tests](#tests)
+  * [Questions](#questions)
+  
+  ## Installation
+  ${data.installation}
 
-  return mdMain
+  ## Usage
+  ${data.usage}
+
+  ## Credits
+  ${data.credits}
+
+  ## License
+  ${data.license}
+
+  ## Contributing 
+  ${data.contributing}
+
+  ## Tests
+  ${data.tests}
+
+  ## Questions?
+  You can reach me on GitHub:
+  [${data.username}](${data.profile})
+  OR via this email:
+  ${data.email}
+  
+  `
 }
 
 module.exports = generateMarkdown;
